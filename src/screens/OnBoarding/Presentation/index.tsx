@@ -1,6 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 export const Presentation: React.FC = () => {
-  return <View testID="presentation-screen" />;
+  return (
+    <View testID="presentation-screen">
+      <Text>Presentation</Text>
+    </View>
+  );
 };
