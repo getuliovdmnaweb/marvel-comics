@@ -54,7 +54,7 @@ export const Presentation: React.FC<Props> = ({ setPresenting }) => {
         style={styles.finishPresentation}
         onPress={() => setPresenting(false)}
       >
-        <Text style={{ color: "white" }}>Skip Presentation</Text>
+        <Text style={{ color: "white" }}>Finish Presentation</Text>
       </TouchableOpacity>
     </View>
   );

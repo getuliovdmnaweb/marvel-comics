@@ -13,9 +13,17 @@ interface Props {
 const Carrousel: React.FC<Props> = ({ currentPage, nextPage, prevPage }) => {
   return (
     <View style={{ width: "100%" }}>
-      <Image style={styles.image} source={currentPage.imageSource} />
+      <Image
+        accessibilityRole="image"
+        style={styles.image}
+        source={currentPage.imageSource}
+      />
       <View style={styles.buttonsContainer}>
-        <CarrouselButton onPress={prevPage} title="Prev" />
+        <CarrouselButton
+          accessibilityRole="button"
+          onPress={prevPage}
+          title="Prev"
+        />
         <View style={styles.tabsContainer}>
           <View
             style={
@@ -28,11 +36,19 @@ const Carrousel: React.FC<Props> = ({ currentPage, nextPage, prevPage }) => {
             }
           />
         </View>
-        <CarrouselButton onPress={nextPage} title="Next" />
+        <CarrouselButton
+          accessibilityRole="button"
+          onPress={nextPage}
+          title="Next"
+        />
       </View>
-      <View style={styles.contentContainer}>
-        <Text style={styles.title}>{currentPage.title}</Text>
-        <Text style={styles.content}>{currentPage.content}</Text>
+      <View accessibilityRole="summary" style={styles.contentContainer}>
+        <Text accessibilityRole="text" style={styles.title}>
+          {currentPage.title}
+        </Text>
+        <Text accessibilityRole="text" style={styles.content}>
+          {currentPage.content}
+        </Text>
       </View>
     </View>
   );
