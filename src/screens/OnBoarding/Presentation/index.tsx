@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { TouchableOpacity, Text, View } from "react-native";
-import {
-  header_gray,
-  on_boarding_hero,
-  on_boarding_comics,
-} from "../../../constants";
+import { on_boarding_hero, on_boarding_comics } from "../../../constants";
 import Carrousel from "./Carrousel";
+import { styles } from "./styles";
 
 const initialPages: Page[] = [
   {
@@ -46,15 +43,7 @@ export const Presentation: React.FC<Props> = ({ setPresenting }) => {
   };
 
   return (
-    <View
-      testID="presentation-screen"
-      style={{
-        flex: 1,
-        backgroundColor: header_gray,
-        justifyContent: "space-between",
-        paddingBottom: 30,
-      }}
-    >
+    <View testID="presentation-screen" style={styles.container}>
       <Carrousel
         currentPage={currentPage}
         prevPage={prevPage}
@@ -62,14 +51,7 @@ export const Presentation: React.FC<Props> = ({ setPresenting }) => {
       />
 
       <TouchableOpacity
-        style={{
-          borderColor: "white",
-          borderWidth: 0.5,
-          width: "80%",
-          justifyContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-        }}
+        style={styles.finishPresentation}
         onPress={() => setPresenting(false)}
       >
         <Text style={{ color: "white" }}>Skip Presentation</Text>

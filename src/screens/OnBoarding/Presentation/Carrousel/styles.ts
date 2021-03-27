@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { logo_red, primary_font_family } from "../../../../constants";
 
 export const styles = StyleSheet.create({
+  image: { marginBottom: 15, width: "100%", height: 220 },
   buttonsContainer: {
     width: "80%",
     flexDirection: "row",

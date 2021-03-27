@@ -13,10 +13,7 @@ interface Props {
 const Carrousel: React.FC<Props> = ({ currentPage, nextPage, prevPage }) => {
   return (
     <View style={{ width: "100%" }}>
-      <Image
-        style={{ marginBottom: 15, width: "100%", height: 220 }}
-        source={currentPage.imageSource}
-      />
+      <Image style={styles.image} source={currentPage.imageSource} />
       <View style={styles.buttonsContainer}>
         <CarrouselButton onPress={prevPage} title="Prev" />
         <View style={styles.tabsContainer}>
