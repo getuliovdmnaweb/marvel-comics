@@ -1,13 +1,18 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useState } from "react";
+import { View } from "react-native";
 import { Presentation } from "./Presentation";
 import { FavoriteHero } from "./FavoriteHero";
 
 const OnBoarding: React.FC = () => {
+  const [presenting, setPresenting] = useState<boolean>(true);
+
   return (
-    <View>
-      <Presentation />
-      <FavoriteHero />
+    <View style={{ flex: 1 }}>
+      {presenting ? (
+        <Presentation setPresenting={setPresenting} />
+      ) : (
+        <FavoriteHero />
+      )}
     </View>
   );
 };
