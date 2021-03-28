@@ -17,6 +17,7 @@ describe("Tests Favorite Hero component.", () => {
     const button = getByRole("button");
     fireEvent.changeText(input, "Spider");
     fireEvent.press(button);
+
     // Expects until the result comes back from the server with a list of your favorite hero.
     await waitFor(() => expect(getByText("Spider")).toBeDefined());
   });
