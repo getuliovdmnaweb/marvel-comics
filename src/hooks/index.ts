@@ -1,8 +1,37 @@
 import { Alert } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../api";
 import { HEROES_URL } from "../api/urls";
 import { Hero } from "../types";
+
+export const useComics = (hero: Hero) => {
+  const [comics, setComics] = useState<Comic[] | []>([]);
+  const [loadingComics, setLoadingComics] = useState<boolean>(false);
+
+  useEffect(() => {
+    let mounted = true;
+    if (mounted) {
+      (async () => {
+        setLoadingComics(true);
+        const response = await api.get(hero.comics.collectionURI);
+        const comicsReponse = response.map((comic: Comic) => {
+          return { ...comic, id: comic.id.toString() };
+        });
+        setComics(comicsReponse);
+        setLoadingComics(false);
+      })();
+    }
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  return {
+    comics,
+    loadingComics,
+  };
+};
 
 export const useHeroes = () => {
   const [heroes, setHeroes] = useState<Hero[]>([]);
