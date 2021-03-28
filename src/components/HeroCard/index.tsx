@@ -14,7 +14,7 @@ const HeroCard: React.FC<Props> = ({ hero }) => {
   return (
     <View style={{ width: 150 }}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("ListCommics", { hero })}
+        onPress={() => navigation.navigate("Hero Comics", { hero })}
       >
         <Image
           style={styles.image}
