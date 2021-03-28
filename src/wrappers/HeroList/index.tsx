@@ -18,7 +18,7 @@ const HeroListWrapper: React.FC<Props> = ({
     return (
       <View style={{ flex: 1 }}>
         <ActivityIndicator
-          testID="activity-indicator"
+          accessibilityRole="spinbutton"
           size={60}
           color="#151515"
         />

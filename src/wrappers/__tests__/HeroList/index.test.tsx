@@ -11,12 +11,12 @@ interface Props {
 }
 
 const renderComponent = ({ heroes, loadingHeroes, children }: Props) => {
-  const { getByText, getByTestId } = render(
+  const { getByText, getByTestId, getByA11yRole } = render(
     <HeroList heroes={heroes} loadingHeroes={loadingHeroes}>
       {children}
     </HeroList>
   );
-  return { getByText, getByTestId };
+  return { getByText, getByTestId, getByA11yRole };
 };
 
 describe("Testing <Hero />", () => {
@@ -28,6 +28,7 @@ describe("Testing <Hero />", () => {
     };
     const { getByText } = renderComponent(defaultCondition);
     const defaultMessage = getByText("Find your favorite Hero!");
+    expect(defaultMessage).toBeDefined();
   });
   it("should render activity Indicator component if loading heroes", () => {
     const defaultCondition = {
@@ -35,8 +36,9 @@ describe("Testing <Hero />", () => {
       loadingHeroes: true,
       children: <Text>Teste</Text>,
     };
-    const { getByTestId } = renderComponent(defaultCondition);
-    const activityIndicator = getByTestId("activity-indicator");
+    const { getByA11yRole } = renderComponent(defaultCondition);
+    const activityIndicator = getByA11yRole("spinbutton");
+    expect(activityIndicator).toBeDefined();
   });
   it("should render children if finishedLoading heroes and returns something inside of heroes array ", () => {
     const defaultCondition = {
@@ -46,5 +48,6 @@ describe("Testing <Hero />", () => {
     };
     const { getByText } = renderComponent(defaultCondition);
     const textComponent = getByText("Teste");
+    expect(textComponent).toBeDefined();
   });
 });

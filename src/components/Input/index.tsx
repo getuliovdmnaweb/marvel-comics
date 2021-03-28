@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Text, TextInput, View, TouchableOpacity } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { styles } from "./styles";
 
@@ -16,6 +16,22 @@ const Input: React.FC<Props> = ({ onPress }) => {
     setInputValue(initialInputValue);
   }, []);
 
+  const searchHero = async () => {
+    if (inputValue.length === 0) {
+      Alert.alert(
+        "Type some hero initials",
+        "You forgot to type hero initials. Please type some initials so we can retrieve your favorite Hero!",
+        [],
+        {
+          cancelable: true,
+        }
+      );
+    } else {
+      await onPress(inputValue);
+      clearInput();
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -29,10 +45,8 @@ const Input: React.FC<Props> = ({ onPress }) => {
         />
       </View>
       <TouchableOpacity
-        onPress={async () => {
-          await onPress(inputValue);
-          clearInput();
-        }}
+        accessibilityRole="button"
+        onPress={searchHero}
         style={styles.buttonContainer}
       >
         <Text style={styles.buttonTitle}>SEARCH</Text>

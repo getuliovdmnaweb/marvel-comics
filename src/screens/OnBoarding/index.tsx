@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { Presentation } from "./Presentation";
 import { FavoriteHero } from "./FavoriteHero";
+import { HeroesProvider } from "../../providers";
 
 const OnBoarding: React.FC = () => {
   const [presenting, setPresenting] = useState<boolean>(true);
@@ -11,7 +12,9 @@ const OnBoarding: React.FC = () => {
       {presenting ? (
         <Presentation setPresenting={setPresenting} />
       ) : (
-        <FavoriteHero />
+        <HeroesProvider>
+          <FavoriteHero />
+        </HeroesProvider>
       )}
     </View>
   );
