@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     fontWeight: "normal",
     fontFamily: "Roboto",
     color: "white",
+    textAlign: "justify",
   },
   headerSummary: { backgroundColor: "#202020", padding: 15 },
   triangleCorner: {

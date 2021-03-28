@@ -7,7 +7,7 @@ import { getImageUri } from "../../helpers";
 import { styles } from "./styles";
 
 interface Props {
-  comic: any;
+  comic: Comic;
 }
 
 const ComicCard: React.FC<Props> = ({ comic }) => {
@@ -19,19 +19,27 @@ const ComicCard: React.FC<Props> = ({ comic }) => {
 
   return (
     <View style={styles.cardContainer}>
-      <View style={styles.touchable}>
-        <TouchableOpacity onPress={onPress}>
+      <View accessibilityRole="imagebutton" style={styles.touchable}>
+        <TouchableOpacity accessibilityRole="button" onPress={onPress}>
           <Image
+            accessibilityRole="image"
             style={{ height: 150 }}
             source={{ uri: getImageUri(comic.thumbnail, Portrait.XLARGE) }}
           />
         </TouchableOpacity>
       </View>
 
-      <Text style={styles.title} textBreakStrategy="simple" numberOfLines={4}>
+      <Text
+        accessibilityRole="text"
+        style={styles.title}
+        textBreakStrategy="simple"
+        numberOfLines={4}
+      >
         {comic.title}
       </Text>
-      <Text style={styles.price}>${comic.prices[0].price}</Text>
+      <Text accessibilityRole="text" style={styles.price}>
+        ${comic.prices[0].price}
+      </Text>
     </View>
   );
 };

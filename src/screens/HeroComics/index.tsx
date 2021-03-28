@@ -20,12 +20,17 @@ const HeroComics: React.FC<Props> = ({ route }) => {
     <ScrollView style={styles.container}>
       <View style={styles.headerContainer}>
         <Image
+          accessibilityRole="image"
           style={styles.headerImage}
           source={{ uri: getImageUri(hero.thumbnail, Landscape.XLARGE) }}
         />
-        <View style={styles.headerSummary}>
-          <Text style={styles.headerTitle}>{hero.name}</Text>
-          <Text style={styles.headerDescription}>{hero.description}</Text>
+        <View accessibilityRole="summary" style={styles.headerSummary}>
+          <Text accessibilityRole="text" style={styles.headerTitle}>
+            {hero.name}
+          </Text>
+          <Text accessibilityRole="text" style={styles.headerDescription}>
+            {hero.description}
+          </Text>
         </View>
         <View style={styles.triangleCorner} />
       </View>
