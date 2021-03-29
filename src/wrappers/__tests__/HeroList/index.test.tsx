@@ -42,7 +42,14 @@ describe("Testing <Hero />", () => {
   });
   it("should render children if finishedLoading heroes and returns something inside of heroes array ", () => {
     const defaultCondition = {
-      heroes: [{ id: 123, thumbnail: "", comics: { collectionURI: "teste" } }],
+      heroes: [
+        {
+          id: 123,
+          name: "",
+          thumbnail: { extension: "", path: "" },
+          comics: { collectionURI: "teste" },
+        },
+      ],
       loadingHeroes: false,
       children: <Text>Teste</Text>,
     };
