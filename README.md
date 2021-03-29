@@ -9,6 +9,44 @@
 
 ## Getting Started
 
+#### APK Android
+Apk's link was created with expo for android.
+
+After downloading the apk drag and drop it to an emulator or try to install it on your Android device.
+
+In case you did not succeed with the APK, try to run in debug mode using the following instructions.
+
+#### Installing the App
+First of all you need to install machine dependencies.
+Verify if you have expo-cli installed on your machine.
+For that run:
+
+```
+npm install --global expo-cli 
+```
+
+or
+
+```
+yarn global add expo-cli 
+```
+After that inside Project's folder install all of the dependencies running:
+
+```
+yarn install
+```
+After that start project with
+```
+yarn start
+```
+Para poder rodar o projeto basta você baixar o aplicativo do expo nas Stores e escanear o QrCode que estará disponivel no terminal.
+Alternativamente se tiver algum Emulador do Android instalado na sua máquina basta apertar 'a' no terminal e o expo instalará no seu emulador o app.
+
+#### Running Tests
+```
+yarn test
+```
+
 ## Branches:
 
 #### It was created 5 Branches:
