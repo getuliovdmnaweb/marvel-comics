@@ -10,7 +10,7 @@
 ## Getting Started
 
 #### APK Android
-Apk's link was created with expo for android.
+Apk's link was created with expo for android. Download Android [APK here](https://expo.io/artifacts/bbdaf8b8-261c-4563-9917-e90ee3e5f24e)
 
 After downloading the apk drag and drop it to an emulator or try to install it on your Android device.
 
