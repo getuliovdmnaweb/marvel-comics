@@ -25,7 +25,7 @@ const DetailRow: React.FC<DetailRowProps> = ({ detail, detailValue }) => {
 
 const ComicDetail: React.FC<Props> = ({ route }) => {
   const { comic } = route.params;
-  console.log(comic);
+
   return (
     <ScrollView>
       <View style={styles.header}>
