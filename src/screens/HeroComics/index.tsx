@@ -36,6 +36,7 @@ const HeroComics: React.FC<Props> = ({ route }) => {
       </View>
       <ComicsListWrapper comics={comics} loadingComics={loadingComics}>
         <FlatList
+          testID="comic-list"
           data={comics}
           horizontal={true}
           contentContainerStyle={styles.contentContainer}

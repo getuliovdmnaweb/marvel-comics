@@ -4,9 +4,10 @@ import { useNavigation } from "@react-navigation/core";
 import { getImageUri } from "../../helpers";
 import { styles } from "./styles";
 import { Portrait } from "../../constants";
+import { Hero } from "../../types";
 
 interface Props {
-  hero: any;
+  hero: Hero;
 }
 
 const HeroCard: React.FC<Props> = ({ hero }) => {
@@ -14,6 +15,7 @@ const HeroCard: React.FC<Props> = ({ hero }) => {
   return (
     <View style={{ width: 150 }}>
       <TouchableOpacity
+        accessibilityRole="button"
         onPress={() => navigation.navigate("Hero Comics", { hero })}
       >
         <Image

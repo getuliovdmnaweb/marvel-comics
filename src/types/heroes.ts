@@ -1,9 +1,15 @@
-interface Comics {
+export interface Thumbnail {
+  extension: string;
+  path: string;
+}
+
+export interface Comics {
   collectionURI: string;
 }
 
-export type Hero = {
+export interface Hero {
   id: number;
-  thumbnail: any;
+  name: string;
+  thumbnail: Thumbnail;
   comics: Comics;
-};
+}
