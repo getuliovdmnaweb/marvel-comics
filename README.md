@@ -10,7 +10,7 @@
 ## Getting Started
 
 #### APK Android
-Apk's link was created with expo for android. Download Android [APK here](https://expo.io/artifacts/bbdaf8b8-261c-4563-9917-e90ee3e5f24e)
+Apk's link was created with expo for android. Download Android [APK here](https://expo.io/artifacts/46cd44f8-4577-457c-883f-e8bb68e9fde4)
 
 After downloading the apk drag and drop it to an emulator or try to install it on your Android device.
 
@@ -55,6 +55,8 @@ yarn test
 - **feature/MARVEL-on-boarding**: Branch created to add features related to on boarding screen.
 - **feature/MARVEL-hero-comics**: Branch created to add features related to listing comics for a particular hero.
 - **feature/MARVEL-comic-detail**: Branch created to add features related to showing comic detail, like cover, issue number, pub date and so on.
+- **feature/MARVEL-ok-button-handler**: Branch created to add action to searchHeroes on ok keyboardButton press.
+- **topic/MARVEL-adding-more-tests**: Branch created to add more complex screen tests, mocking axios and react-navigation, and nested in provider components.
 
 ## Project Structure:
 
@@ -94,8 +96,8 @@ yarn test
 
 #### State Management: 
 
-  The application is small, so I saw no reason to use libraries like redux, mobX. It seemed to me that, Context API (to avoid prop drilling and to share state through different components) and local component state surficed for the purpose of this test.
+The application is small, so I saw no reason to use libraries like redux, mobX. It seemed to me that, Context API (to avoid prop drilling and to share state through different components) and local component state surficed for the purpose of this test.
 
 #### Hard Coded PrivateKEY:
 
-  This is definitely not a good practice. Usually I work using NodeENV or other libraries like that, which create enviroment varibles to keep confidential data. Howhever, since one of the requirements for the test was an easy way to run the application, it seemed to me appropriate to left it there and give the consideration, to make easy to run the test. But, stating here that this is not the way to do development and production environments, and this is a serious issue on large applications.
+This is definitely not a good practice. Usually I work using NodeENV or other libraries like that, which create enviroment varibles to keep confidential data. Howhever, since one of the requirements for the test was an easy way to run the application, it seemed to me appropriate to left it there and give the consideration, to make easy to run the test. But, stating here that this is not the way to do development and production environments, and this is a serious issue on large applications.
