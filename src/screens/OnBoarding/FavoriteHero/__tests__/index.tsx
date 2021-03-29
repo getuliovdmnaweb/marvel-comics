@@ -10,24 +10,22 @@ import mockAxios from "axios";
 import { HeroesProvider } from "../../../../providers";
 import { HEROES_URL } from "../../../../api/urls";
 import { MD5_HASH, PUBLIC_KEY, TIMESTAMP } from "../../../../constants";
+import {
+  mockedAxiosResponse,
+  mockedAxiosEmptyResponse,
+} from "../../../../testUtils/heroes";
 
 const spyAlert = jest.spyOn(Alert, "alert");
+const mockedNavigate = jest.fn();
 
-const response = {
-  data: {
-    data: {
-      results: [
-        {
-          id: "123",
-          description: "123",
-          prices: [{ type: "123", price: 123 }],
-          thumbnail: { extension: "123", path: "123" },
-          title: "test",
-        },
-      ],
-    },
-  },
-};
+jest.mock("@react-navigation/core", () => {
+  return {
+    ...jest.requireActual("@react-navigation/core"),
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
+  };
+});
 
 describe("Tests Favorite Hero component.", () => {
   it("should display a title with summary of screen, button, input by default", () => {
@@ -63,13 +61,7 @@ describe("Tests Favorite Hero component.", () => {
   it("show Alert if user types invalid Hero Initials.", async () => {
     // Mocked response for get request
     //@ts-ignore
-    mockAxios.get.mockResolvedValueOnce({
-      data: {
-        data: {
-          results: [],
-        },
-      },
-    });
+    mockAxios.get.mockResolvedValueOnce(mockedAxiosEmptyResponse);
     const { getByA11yRole, getByPlaceholderText, queryByRole, debug } = render(
       <HeroesProvider>
         <FavoriteHero />
@@ -95,6 +87,29 @@ describe("Tests Favorite Hero component.", () => {
     // Alert pops up because api could not retrive heroes with input Value
     expect(spyAlert).toHaveBeenCalled();
     await waitForElementToBeRemoved(() => queryByRole("spinbutton"));
-    // Asserts that api Call is being made.
+  });
+  it("shows a list of favorite heroes when typed valid hero initials.", async () => {
+    //@ts-ignore
+    mockAxios.get.mockResolvedValueOnce(mockedAxiosResponse);
+    const { getByRole, getByPlaceholderText, findByTestId } = render(
+      <HeroesProvider>
+        <FavoriteHero />
+      </HeroesProvider>
+    );
+
+    // Typing valid credentials
+    const input = getByPlaceholderText("HERO NAME INITIALS");
+    const button = getByRole("button");
+    const inputValue = "Spider";
+
+    fireEvent.changeText(input, inputValue);
+    fireEvent.press(button);
+
+    // Activity Indicator should appear in the screen.
+    const activityIndicator = getByRole("spinbutton");
+    expect(activityIndicator).toBeDefined();
+
+    const heroList = await findByTestId("heroes-list");
+    expect(heroList).toBeDefined();
   });
 });

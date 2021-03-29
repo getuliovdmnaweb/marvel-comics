@@ -1,22 +1,28 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
 import HeroComics from "../";
+import mockAxios from "axios";
+import {
+  mockedComicRoute,
+  mockedAxiosResponse,
+  mockedEmptyAxiosResponse,
+} from "../../../testUtils/comics";
 
-const route = {
-  params: {
-    hero: {
-      id: 123,
-      name: "test",
-      thumbnail: "test",
-      comics: { collectionURI: "" },
-    },
-  },
-};
+const mockedNavigate = jest.fn();
+
+jest.mock("@react-navigation/native", () => {
+  return {
+    ...jest.requireActual("@react-navigation/native"),
+    useNavigation: () => ({
+      navigate: mockedNavigate,
+    }),
+  };
+});
 
 describe("Application should have a screen to list the comics from your favorite hero.", () => {
   it("renders default components", () => {
-    const { getAllByRole, getByRole, debug } = render(
-      <HeroComics route={route} />
+    const { getAllByRole, getByRole } = render(
+      <HeroComics route={mockedComicRoute} />
     );
     // Shows header with description for that hero
     const summary = getByRole("summary");
@@ -32,9 +38,28 @@ describe("Application should have a screen to list the comics from your favorite
     const activityIndicator = getByRole("spinbutton");
     expect(activityIndicator).toBeDefined();
   });
-  it("Should render list of comics for the favorite hero from the user.", () => {
-    const { getAllByRole, getByRole, debug } = render(
-      <HeroComics route={route} />
+  it("Should render text indicating there are no comics for that hero if comic list is empty", async () => {
+    //@ts-ignore
+    mockAxios.get.mockResolvedValueOnce(mockedEmptyAxiosResponse);
+    const { findByText, getByRole } = render(
+      <HeroComics route={mockedComicRoute} />
     );
+    const activityIndicator = getByRole("spinbutton");
+    expect(activityIndicator).toBeDefined();
+
+    const noComicsText = await findByText("There are no comics for this hero!");
+    expect(noComicsText).toBeDefined();
+  });
+  it("Should render list of comics for the favorite hero from the user.", async () => {
+    //@ts-ignore
+    mockAxios.get.mockResolvedValueOnce(mockedAxiosResponse);
+    const { findByTestId, getByRole } = render(
+      <HeroComics route={mockedComicRoute} />
+    );
+    const activityIndicator = getByRole("spinbutton");
+
+    expect(activityIndicator).toBeDefined();
+    const comicList = await findByTestId("comic-list");
+    expect(comicList).toBeDefined();
   });
 });
