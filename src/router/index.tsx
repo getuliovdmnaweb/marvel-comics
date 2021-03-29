@@ -1,9 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Image } from "react-native";
-import { OnBoarding } from "../screens";
+import { OnBoarding, HeroComics, ComicDetail } from "../screens";
 import { styles, screenOptions } from "./styles";
-import { HeroComics } from "../screens";
 
 const Stack = createStackNavigator();
 
@@ -19,6 +18,7 @@ const MainRouter: React.FC = () => {
         component={OnBoarding}
       />
       <Stack.Screen name="Hero Comics" component={HeroComics} />
+      <Stack.Screen name="Comic Detail" component={ComicDetail} />
     </Stack.Navigator>
   );
 };
