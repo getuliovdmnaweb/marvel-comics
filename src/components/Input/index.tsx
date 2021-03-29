@@ -42,6 +42,7 @@ const Input: React.FC<Props> = ({ onPress }) => {
           onChangeText={setInputValue}
           placeholder="HERO NAME INITIALS"
           placeholderTextColor="#A1A1A1"
+          onSubmitEditing={searchHero}
         />
       </View>
       <TouchableOpacity
