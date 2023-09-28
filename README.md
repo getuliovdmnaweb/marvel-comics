@@ -7,6 +7,24 @@
 - Typescript
 - Jest and Testing Library
 
+## Screens
+
+<table>
+  <tr>
+     <td>Onboarding</td>
+     <td>List and Search your Favorite Hero</td>
+     <td>Details of Hero and List of their commics</td>
+     <td>Details of Commics</td>
+  </tr>
+  <tr>
+    <td><img width="600" alt="image" src="https://github.com/getuliovdmnaweb/marvel-comics/assets/65790521/0bda8719-3aef-4a71-bfd1-f2df308bde78"></td>
+    <td><img width="600" alt="image" src="https://github.com/getuliovdmnaweb/marvel-comics/assets/65790521/979a6223-6110-4499-8c87-a54fc00c7dd4"></td>
+    <td><img width="600" alt="image" src="https://github.com/getuliovdmnaweb/marvel-comics/assets/65790521/436fe5dd-417c-4f3b-a255-8cf2049e7ac6"></td>
+    <td><img width="600" alt="image" src="https://github.com/getuliovdmnaweb/marvel-comics/assets/65790521/e6bf7301-7d9b-4b1c-b35d-c92c46b7abb1">
+</td>
+  </tr>
+ </table>
+
 ## Getting Started
 
 #### APK Android
@@ -101,3 +119,4 @@ The application is small, so I saw no reason to use libraries like redux, mobX. 
 #### Hard Coded PrivateKEY:
 
 This is definitely not a good practice. Usually I work using NodeENV or other libraries like that, which create enviroment varibles to keep confidential data. Howhever, since one of the requirements for the test was an easy way to run the application, it seemed to me appropriate to left it there and give the consideration, to make easy to run the test. But, stating here that this is not the way to do development and production environments, and this is a serious issue on large applications.
+
